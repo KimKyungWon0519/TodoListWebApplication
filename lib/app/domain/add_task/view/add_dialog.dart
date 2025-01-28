@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:todo_list_application/app/domain/add_task/view/widget/base_field.dart';
+import 'package:todo_list_application/app/domain/add_task/view/widget/input_panel.dart';
+import 'package:todo_list_application/app/domain/add_task/view/widget/option_panel.dart';
 
 class AddDialog extends StatelessWidget {
   const AddDialog({super.key});
@@ -8,33 +9,26 @@ class AddDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Row(
-        children: [
-          Text('새로운 일정 추가'),
-          Spacer(),
-          DropdownMenu(
-            dropdownMenuEntries: [],
-          ),
-        ],
-      ),
-      content: Container(
-        padding: EdgeInsets.all(8),
-        width: MediaQuery.sizeOf(context).width / 2,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          spacing: 8,
+      content: SizedBox(
+        width: MediaQuery.sizeOf(context).width / 1.5,
+        child: Row(
+          spacing: 16,
           children: [
-            BaseField(labelText: '제목'),
-            BaseField(labelText: '내용'),
-            BaseField(labelText: '담당자'),
-            BaseField(labelText: '날짜'),
+            Expanded(
+              flex: 6,
+              child: InputPanel(),
+            ),
+            VerticalDivider(),
+            Expanded(
+              child: OptionPanel(),
+            ),
           ],
         ),
       ),
       actions: [
         TextButton(
           onPressed: () {},
-          child: Text('완료'),
+          child: Text('저장'),
         ),
       ],
     );
