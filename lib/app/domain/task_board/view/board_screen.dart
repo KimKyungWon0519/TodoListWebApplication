@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kanban_board/custom/board.dart';
 import 'package:kanban_board/models/inputs.dart';
 import 'package:todo_list_application/app/domain/task_board/model/task_type.dart';
+import 'package:todo_list_application/app/domain/task_board/view/widget/board_footer.dart';
 import 'package:todo_list_application/app/domain/task_board/view/widget/board_header.dart';
 
 class BoardScreen extends StatelessWidget {
@@ -19,6 +20,7 @@ class BoardScreen extends StatelessWidget {
           (index) {
             return BoardListsData(
               header: BoardHeader(text: TaskType.values[index].name),
+              footer: BoardFooter(),
               items: [],
             );
           },
