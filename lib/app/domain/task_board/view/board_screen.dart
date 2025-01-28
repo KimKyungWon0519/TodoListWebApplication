@@ -20,6 +20,8 @@ class BoardScreen extends GetView<TaskController> {
       ),
       body: Obx(
         () {
+          print('update?');
+
           return KanbanBoard(
             List.generate(
               controller.tasksObs.length,
@@ -38,6 +40,19 @@ class BoardScreen extends GetView<TaskController> {
                 );
               },
             ),
+            onItemReorder:
+                (oldCardIndex, newCardIndex, oldListIndex, newListIndex) {
+              if (oldCardIndex == null ||
+                  newCardIndex == null ||
+                  oldListIndex == null ||
+                  newListIndex == null) return;
+
+              if (oldCardIndex != newCardIndex ||
+                  oldListIndex != newListIndex) {
+                controller.changeTask(
+                    oldListIndex, oldCardIndex, newListIndex, newCardIndex);
+              }
+            },
           );
         },
       ),
