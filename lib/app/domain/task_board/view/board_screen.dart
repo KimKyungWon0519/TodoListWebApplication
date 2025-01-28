@@ -4,6 +4,7 @@ import 'package:kanban_board/models/inputs.dart';
 import 'package:todo_list_application/app/domain/task_board/model/task_type.dart';
 import 'package:todo_list_application/app/domain/task_board/view/widget/board_footer.dart';
 import 'package:todo_list_application/app/domain/task_board/view/widget/board_header.dart';
+import 'package:todo_list_application/app/domain/task_board/view/widget/task_card.dart';
 
 class BoardScreen extends StatelessWidget {
   const BoardScreen({super.key});
@@ -22,7 +23,9 @@ class BoardScreen extends StatelessWidget {
               width: MediaQuery.sizeOf(context).width / 4 - 16,
               header: BoardHeader(text: TaskType.values[index].name),
               footer: BoardFooter(),
-              items: [],
+              items: [
+                TaskCard(),
+              ],
             );
           },
         ),
