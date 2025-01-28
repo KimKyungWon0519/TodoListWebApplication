@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.6.6
+  kanban_board: ^0.1.0
 
 dev_dependencies:
   flutter_test:
