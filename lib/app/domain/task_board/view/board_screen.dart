@@ -33,7 +33,7 @@ class BoardScreen extends GetView<TaskController> {
                   footer: BoardFooter(),
                   items: List.generate(
                     tasksWithType.tasks.length,
-                    (index) => TaskCard(),
+                    (index) => TaskCard(tasksWithType.tasks[index]),
                   ),
                 );
               },

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_list_application/app/domain/detail_task/view/detail_task_dialog.dart';
+import 'package:todo_list_application/app/domain/task_board/model/task.dart';
 
 class TaskCard extends StatelessWidget {
-  const TaskCard({super.key});
+  final Task task;
+
+  const TaskCard(this.task, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +25,15 @@ class TaskCard extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      '제목',
+                      task.title,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Text('담당자'),
+                  Text(task.assignee),
                 ],
               ),
               Divider(),
-              Text('2025.01.01'),
+              Text(task.date.toString()),
             ],
           ),
         ),
