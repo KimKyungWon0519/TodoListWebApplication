@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:todo_list_application/app/domain/add_task/view/widget/base_field.dart';
 
 class AddDialog extends StatelessWidget {
   const AddDialog({super.key});
@@ -22,30 +24,10 @@ class AddDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           spacing: 8,
           children: [
-            TextField(
-              decoration: InputDecoration(
-                labelText: '제목',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            TextField(
-              decoration: InputDecoration(
-                labelText: '내용',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            TextField(
-              decoration: InputDecoration(
-                labelText: '담당자',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            TextField(
-              decoration: InputDecoration(
-                labelText: '날짜',
-                border: OutlineInputBorder(),
-              ),
-            ),
+            BaseField(labelText: '제목'),
+            BaseField(labelText: '내용'),
+            BaseField(labelText: '담당자'),
+            BaseField(labelText: '날짜'),
           ],
         ),
       ),
