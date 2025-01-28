@@ -96,7 +96,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "1780a22833bc9f71a302844ddfdda20ca803dfdf"
+      resolved-ref: "653a435239cd7650385d636613caae64f0d52eba"
       url: "https://github.com/KimKyungWon0519/FlutterKanbanBoard"
     source: git
     version: "0.1.0"
