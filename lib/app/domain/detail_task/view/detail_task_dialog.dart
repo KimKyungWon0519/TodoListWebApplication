@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list_application/app/domain/add_task/view/widget/base_field.dart';
-import 'package:todo_list_application/app/domain/add_task/view/widget/input_panel.dart';
-import 'package:todo_list_application/app/domain/add_task/view/widget/option_panel.dart';
+import 'package:todo_list_application/app/domain/detail_task/view/widget/input_panel.dart';
+import 'package:todo_list_application/app/domain/detail_task/view/widget/option_panel.dart';
 
-class AddDialog extends StatelessWidget {
-  const AddDialog({super.key});
+class DetailTaskDialog extends StatelessWidget {
+  const DetailTaskDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
