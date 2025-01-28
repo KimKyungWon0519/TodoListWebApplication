@@ -19,6 +19,7 @@ class BoardScreen extends StatelessWidget {
           TaskType.values.length,
           (index) {
             return BoardListsData(
+              width: MediaQuery.sizeOf(context).width / 4 - 16,
               header: BoardHeader(text: TaskType.values[index].name),
               footer: BoardFooter(),
               items: [],
