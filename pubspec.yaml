@@ -10,7 +10,10 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.6.6
-  kanban_board: ^0.1.0
+  kanban_board: 
+    git: 
+      url: https://github.com/KimKyungWon0519/FlutterKanbanBoard
+      ref: main
 
 dev_dependencies:
   flutter_test:
