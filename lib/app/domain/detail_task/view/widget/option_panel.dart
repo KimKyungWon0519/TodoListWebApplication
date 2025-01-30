@@ -22,8 +22,28 @@ class OptionPanel extends StatelessWidget {
               )
               .toList(),
         ),
-        BaseField(labelText: '담당자'),
-        BaseField(labelText: '날짜'),
+        BaseField(
+          labelText: '담당자',
+          onSaved: (value) => controller.assignee = value,
+        ),
+        BaseField(
+          labelText: '날짜',
+          readOnly: true,
+          onTap: () {
+            showDatePicker(
+              context: context,
+              firstDate: DateTime(1900),
+              lastDate: DateTime(2300),
+              initialDate: controller.date,
+            ).then(
+              (value) {
+                if (value == null) return;
+
+                controller.date = value;
+              },
+            );
+          },
+        ),
       ],
     );
   }

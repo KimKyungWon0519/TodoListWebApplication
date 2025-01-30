@@ -38,7 +38,25 @@ class DetailTaskDialog extends StatelessWidget {
       ),
       actions: [
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            if (controller.isEmptyTask()) {
+              Get.defaultDialog(
+                title: '경고',
+                content: Text('제목과 담당자를 입력해주세요.'),
+                actions: [
+                  TextButton(
+                    child: Text('확인'),
+                    onPressed: () => Get.back(),
+                  ),
+                ],
+              );
+            }
+
+            Get.back(result: {
+              'type': controller.taskType,
+              'task': controller.task,
+            });
+          },
           child: Text('저장'),
         ),
       ],
