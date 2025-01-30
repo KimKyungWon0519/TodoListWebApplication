@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class DateField extends StatefulWidget {
   final String labelText;
@@ -26,8 +27,8 @@ class _DateFieldState extends State<DateField> {
   void initState() {
     super.initState();
 
-    _textEditingController =
-        TextEditingController(text: '${widget.initialValue}');
+    _textEditingController = TextEditingController(
+        text: DateFormat('yyyy/MM/dd').format(widget.initialValue));
     _dateTime = widget.initialValue;
   }
 
@@ -50,10 +51,9 @@ class _DateFieldState extends State<DateField> {
           (value) {
             if (value == null) return;
 
-            _textEditingController.text = '$value';
+            _textEditingController.text =
+                DateFormat('yyyy/MM/dd').format(widget.initialValue);
             _dateTime = value;
-
-            print(value);
 
             widget.onSaved?.call(_dateTime);
           },

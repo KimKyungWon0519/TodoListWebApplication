@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:todo_list_application/app/domain/detail_task/model/task.dart'
     as DetailTask;
 import 'package:todo_list_application/app/domain/detail_task/model/task_type.dart'
@@ -71,7 +72,7 @@ class TaskCard extends StatelessWidget {
                 ],
               ),
               Divider(),
-              Text(task.date.toString()),
+              Text(DateFormat('yyyy/MM/dd').format(task.date)),
             ],
           ),
         ),
