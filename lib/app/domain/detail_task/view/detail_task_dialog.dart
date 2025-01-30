@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_list_application/app/domain/detail_task/controller/task_editing_controller.dart';
+import 'package:todo_list_application/app/domain/detail_task/model/task.dart';
 import 'package:todo_list_application/app/domain/detail_task/model/task_type.dart';
 import 'package:todo_list_application/app/domain/detail_task/view/widget/input_panel.dart';
 import 'package:todo_list_application/app/domain/detail_task/view/widget/option_panel.dart';
 
 class DetailTaskDialog extends StatelessWidget {
   final TaskType taskType;
+  final Task? task;
 
   const DetailTaskDialog({
     super.key,
     required this.taskType,
+    this.task,
   });
 
   @override
@@ -18,6 +21,7 @@ class DetailTaskDialog extends StatelessWidget {
     TaskEditingController controller = Get.put(TaskEditingController());
 
     controller.taskType = taskType;
+    if (task != null) controller.task = task!;
 
     return AlertDialog(
       content: SizedBox(

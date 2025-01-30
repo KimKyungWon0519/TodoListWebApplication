@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 class BaseField extends StatelessWidget {
   final String labelText;
   final bool expands;
-  final bool readOnly;
   final ValueChanged<String>? onSaved;
-  final VoidCallback? onTap;
   final String initialValue;
 
   const BaseField({
@@ -13,8 +11,6 @@ class BaseField extends StatelessWidget {
     required this.labelText,
     this.expands = false,
     this.onSaved,
-    this.readOnly = false,
-    this.onTap,
     this.initialValue = '',
   });
 
@@ -22,7 +18,6 @@ class BaseField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       controller: TextEditingController(text: initialValue),
-      readOnly: readOnly,
       decoration: InputDecoration(
         labelText: labelText,
         border: OutlineInputBorder(),
@@ -30,7 +25,6 @@ class BaseField extends StatelessWidget {
       expands: expands,
       maxLines: expands ? null : 1,
       onChanged: onSaved,
-      onTap: onTap,
     );
   }
 }

@@ -8,6 +8,7 @@ class TaskEditingController {
   set taskType(TaskType newValue) => _taskType = newValue;
   TaskType get taskType => _taskType;
 
+  set task(Task task) => _task = task;
   Task get task => _task;
 
   set title(String title) => _task = _task.copyWith(title: title);
@@ -19,7 +20,7 @@ class TaskEditingController {
   set assignee(String assignee) => _task = _task.copyWith(assignee: assignee);
   String get assignee => _task.assignee;
 
-  set date(DateTime date) => _task.copyWith(date: date);
+  set date(DateTime date) => _task = _task.copyWith(date: date);
   DateTime get date => _task.date;
 
   bool isEmptyTask() {
