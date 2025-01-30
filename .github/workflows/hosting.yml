@@ -5,7 +5,7 @@ name: Build And Deploy
 
 on:
   push:
-    branch:
+    branches:
       - master
 
 jobs:
@@ -36,3 +36,4 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TODOLISTAPPLICATION_ACA34 }}
           projectId: todolistapplication-aca34
+          channelId: live
