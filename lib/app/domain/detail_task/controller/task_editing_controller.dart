@@ -4,4 +4,5 @@ class TaskEditingController {
   TaskType _taskType = TaskType.toDo;
 
   set taskType(TaskType newValue) => _taskType = newValue;
+  TaskType get taskType => _taskType;
 }
