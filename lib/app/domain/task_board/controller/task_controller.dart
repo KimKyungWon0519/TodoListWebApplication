@@ -26,4 +26,16 @@ class TaskController extends GetxController {
 
     _tasks.refresh();
   }
+
+  void deleteTask(TaskType type, int index) {
+    _tasks[type.index].tasks.removeAt(index);
+
+    _tasks.refresh();
+  }
+
+  void updateTask(TaskType type, Task task, int index) {
+    _tasks[type.index].tasks[index] = task;
+
+    _tasks.refresh();
+  }
 }

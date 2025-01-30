@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:todo_list_application/app/domain/detail_task/controller/task_editing_controller.dart';
 import 'package:todo_list_application/app/domain/detail_task/model/task_type.dart';
 import 'package:todo_list_application/app/domain/detail_task/view/widget/base_field.dart';
+import 'package:todo_list_application/app/domain/detail_task/view/widget/date_field.dart';
 
 class OptionPanel extends StatelessWidget {
   const OptionPanel({super.key});
@@ -32,24 +33,10 @@ class OptionPanel extends StatelessWidget {
           initialValue: controller.assignee,
           onSaved: (value) => controller.assignee = value,
         ),
-        BaseField(
+        DateField(
           labelText: '날짜',
-          initialValue: '${controller.date}',
-          readOnly: true,
-          onTap: () {
-            showDatePicker(
-              context: context,
-              firstDate: DateTime(1900),
-              lastDate: DateTime(2300),
-              initialDate: controller.date,
-            ).then(
-              (value) {
-                if (value == null) return;
-
-                controller.date = value;
-              },
-            );
-          },
+          initialValue: controller.date,
+          onSaved: (value) => controller.date = value,
         ),
       ],
     );
