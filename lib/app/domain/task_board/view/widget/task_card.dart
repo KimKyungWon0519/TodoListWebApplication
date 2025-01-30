@@ -29,17 +29,22 @@ class TaskCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () async {
-        Map<String, dynamic> result = await Get.dialog(DetailTaskDialog(
-          taskType: taskType.toDetailModel(),
-          task: this.task.toDetailModel(),
-        ));
+        Map<String, dynamic>? result = await Get.dialog(
+          DetailTaskDialog(
+            taskType: taskType.toDetailModel(),
+            task: this.task.toDetailModel(),
+          ),
+          barrierDismissible: false,
+        );
+
+        if (result == null) return;
 
         TaskType type =
             (result['type']! as DetailTask.TaskType).toTaskBoardModel();
         Task task = (result['task']! as DetailTask.Task).toTaskBoardModel();
 
         if (type != taskType) {
-          controller.deleteTask(type, index);
+          controller.deleteTask(taskType, index);
           controller.addTask(type, task);
         } else {
           controller.updateTask(taskType, task, index);

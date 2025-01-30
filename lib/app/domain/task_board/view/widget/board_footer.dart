@@ -25,8 +25,12 @@ class BoardFooter extends StatelessWidget {
 
     return TextButton.icon(
       onPressed: () async {
-        Map<String, dynamic> result = await Get.dialog(
-            DetailTaskDialog(taskType: taskType.toDetailModel()));
+        Map<String, dynamic>? result = await Get.dialog(
+          DetailTaskDialog(taskType: taskType.toDetailModel()),
+          barrierDismissible: false,
+        );
+
+        if (result == null) return;
 
         TaskType type =
             (result['type']! as DetailTask.TaskType).toTaskBoardModel();

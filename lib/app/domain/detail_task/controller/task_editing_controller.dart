@@ -3,13 +3,24 @@ import 'package:todo_list_application/app/domain/detail_task/model/task_type.dar
 
 class TaskEditingController {
   TaskType _taskType = TaskType.toDo;
-  Task _task = Task.empty();
+  late Task _task;
   bool _isEditing = false;
+  bool _willSave = false;
 
-  set taskType(TaskType newValue) => _taskType = newValue;
+  void initalValue(TaskType type, Task? task) {
+    _taskType = type;
+
+    _task = task ?? Task.empty();
+  }
+
+  set taskType(TaskType newValue) {
+    _taskType = newValue;
+
+    _isEditing = true;
+  }
+
   TaskType get taskType => _taskType;
 
-  set task(Task task) => _task = task;
   Task get task => _task;
 
   set title(String title) => _updateTask(_task.copyWith(title: title));
@@ -25,6 +36,9 @@ class TaskEditingController {
   set date(DateTime date) => _updateTask(_task.copyWith(date: date));
   DateTime get date => _task.date;
 
+  bool get isEditing => _isEditing;
+  bool get willSave => _willSave;
+
   bool isEmptyTask() {
     return _task.title.trim().isEmpty || _task.assignee.trim().isEmpty;
   }
@@ -33,5 +47,11 @@ class TaskEditingController {
     _task = task;
 
     _isEditing = true;
+  }
+
+  void saveTask() {
+    _willSave = true;
+
+    _isEditing = false;
   }
 }

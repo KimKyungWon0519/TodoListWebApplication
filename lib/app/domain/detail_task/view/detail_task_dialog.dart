@@ -20,8 +20,7 @@ class DetailTaskDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     TaskEditingController controller = Get.put(TaskEditingController());
 
-    controller.taskType = taskType;
-    if (task != null) controller.task = task!;
+    controller.initalValue(taskType, task);
 
     return AlertDialog(
       content: SizedBox(
@@ -42,28 +41,60 @@ class DetailTaskDialog extends StatelessWidget {
       ),
       actions: [
         TextButton(
-          onPressed: () {
-            if (controller.isEmptyTask()) {
-              Get.defaultDialog(
-                title: '경고',
-                content: Text('제목과 담당자를 입력해주세요.'),
-                actions: [
-                  TextButton(
-                    child: Text('확인'),
-                    onPressed: () => Get.back(),
-                  ),
-                ],
-              );
-            }
-
-            Get.back(result: {
-              'type': controller.taskType,
-              'task': controller.task,
-            });
-          },
+          onPressed: () => _onClickSaveButton(controller),
           child: Text('저장'),
         ),
+        TextButton(
+          onPressed: () => _onClickCloseButton(controller),
+          child: Text('닫기'),
+        ),
       ],
+    );
+  }
+
+  void _onClickSaveButton(TaskEditingController controller) {
+    if (controller.isEmptyTask()) {
+      Get.defaultDialog(
+        title: '경고',
+        content: Text('제목과 담당자를 입력해주세요.'),
+        actions: [
+          TextButton(
+            child: Text('확인'),
+            onPressed: () => Get.back(),
+          ),
+        ],
+      );
+    } else {
+      controller.saveTask();
+    }
+  }
+
+  void _onClickCloseButton(TaskEditingController controller) async {
+    if (!controller.willSave && controller.isEditing) {
+      bool result = await Get.defaultDialog(
+        title: '경고',
+        content: Text('편집된 내용이 있습니다.\n해당 창을 닫으면 편집된 내용은 저장되지 않습니다.'),
+        actions: [
+          TextButton(
+            child: Text('닫기'),
+            onPressed: () => Get.back(result: true),
+          ),
+          TextButton(
+            child: Text('머무리기'),
+            onPressed: () => Get.back(result: false),
+          ),
+        ],
+      );
+
+      if (result) {
+        Get.back();
+      } else {
+        return;
+      }
+    }
+
+    Get.back(
+      result: {'type': controller.taskType, 'task': controller.task},
     );
   }
 }
