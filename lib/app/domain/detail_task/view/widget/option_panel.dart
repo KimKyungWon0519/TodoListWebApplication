@@ -21,13 +21,20 @@ class OptionPanel extends StatelessWidget {
                 (e) => DropdownMenuEntry(value: e, label: e.name),
               )
               .toList(),
+          onSelected: (value) {
+            if (value == null) return;
+
+            controller.taskType = value;
+          },
         ),
         BaseField(
           labelText: '담당자',
+          initialValue: controller.assignee,
           onSaved: (value) => controller.assignee = value,
         ),
         BaseField(
           labelText: '날짜',
+          initialValue: '${controller.date}',
           readOnly: true,
           onTap: () {
             showDatePicker(

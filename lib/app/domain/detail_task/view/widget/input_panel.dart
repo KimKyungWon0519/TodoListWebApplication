@@ -15,12 +15,14 @@ class InputPanel extends StatelessWidget {
       children: [
         BaseField(
           labelText: '제목',
+          initialValue: controller.title,
           onSaved: (value) => controller.title = value,
         ),
         Expanded(
           child: BaseField(
             labelText: '내용',
             expands: true,
+            initialValue: controller.content,
             onSaved: (value) => controller.content = value,
           ),
         ),

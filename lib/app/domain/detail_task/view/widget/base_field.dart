@@ -6,6 +6,7 @@ class BaseField extends StatelessWidget {
   final bool readOnly;
   final ValueChanged<String>? onSaved;
   final VoidCallback? onTap;
+  final String initialValue;
 
   const BaseField({
     super.key,
@@ -14,11 +15,13 @@ class BaseField extends StatelessWidget {
     this.onSaved,
     this.readOnly = false,
     this.onTap,
+    this.initialValue = '',
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: TextEditingController(text: initialValue),
       readOnly: readOnly,
       decoration: InputDecoration(
         labelText: labelText,

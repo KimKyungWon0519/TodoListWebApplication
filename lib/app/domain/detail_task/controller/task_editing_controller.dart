@@ -11,8 +11,13 @@ class TaskEditingController {
   Task get task => _task;
 
   set title(String title) => _task = _task.copyWith(title: title);
+  String get title => _task.title;
+
   set content(String content) => _task = _task.copyWith(content: content);
+  String get content => _task.content;
+
   set assignee(String assignee) => _task = _task.copyWith(assignee: assignee);
+  String get assignee => _task.assignee;
 
   set date(DateTime date) => _task.copyWith(date: date);
   DateTime get date => _task.date;
