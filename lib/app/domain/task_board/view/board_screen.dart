@@ -20,8 +20,6 @@ class BoardScreen extends GetView<TaskController> {
       ),
       body: Obx(
         () {
-          print('update?');
-
           return KanbanBoard(
             List.generate(
               controller.tasksObs.length,
@@ -32,10 +30,13 @@ class BoardScreen extends GetView<TaskController> {
                   backgroundColor: Colors.white,
                   width: MediaQuery.sizeOf(context).width / 4 - 16,
                   header: BoardHeader(text: TaskType.values[index].name),
-                  footer: BoardFooter(),
+                  footer: BoardFooter(taskType: tasksWithType.type),
                   items: List.generate(
                     tasksWithType.tasks.length,
-                    (index) => TaskCard(tasksWithType.tasks[index]),
+                    (index) => TaskCard(
+                      tasksWithType.tasks[index],
+                      taskType: tasksWithType.type,
+                    ),
                   ),
                 );
               },

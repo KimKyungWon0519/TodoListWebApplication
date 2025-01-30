@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list_application/app/domain/detail_task/model/task_type.dart';
 import 'package:todo_list_application/app/domain/detail_task/view/widget/input_panel.dart';
 import 'package:todo_list_application/app/domain/detail_task/view/widget/option_panel.dart';
 
 class DetailTaskDialog extends StatelessWidget {
-  const DetailTaskDialog({super.key});
+  final TaskType taskType;
+
+  const DetailTaskDialog({
+    super.key,
+    required this.taskType,
+  });
 
   @override
   Widget build(BuildContext context) {
