@@ -8,7 +8,7 @@ class TaskEditingController {
   set taskType(TaskType newValue) => _taskType = newValue;
   TaskType get taskType => _taskType;
 
-  Task get task => task;
+  Task get task => _task;
 
   set title(String title) => _task = _task.copyWith(title: title);
   set content(String content) => _task = _task.copyWith(content: content);

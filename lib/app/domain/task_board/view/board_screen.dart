@@ -26,6 +26,8 @@ class BoardScreen extends GetView<TaskController> {
               (index) {
                 TasksWithType tasksWithType = controller.tasksObs[index];
 
+                print(tasksWithType.tasks.length);
+
                 return BoardListsData(
                   backgroundColor: Colors.white,
                   width: MediaQuery.sizeOf(context).width / 4 - 16,

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:todo_list_application/app/domain/task_board/model/task.dart';
+import 'package:todo_list_application/app/domain/task_board/model/task_type.dart';
 import 'package:todo_list_application/app/domain/task_board/model/tasks_with_type.dart';
 
 class TaskController extends GetxController {
@@ -16,6 +17,12 @@ class TaskController extends GetxController {
     Task task = _tasks[oldTypeIndex].tasks.removeAt(oldTaskIndex);
 
     _tasks[newTypeIndex].tasks.insert(newTaskIndex, task);
+
+    _tasks.refresh();
+  }
+
+  void addTask(TaskType type, Task task) {
+    _tasks[type.index].tasks.add(task);
 
     _tasks.refresh();
   }
